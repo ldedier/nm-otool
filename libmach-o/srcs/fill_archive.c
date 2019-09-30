@@ -39,6 +39,8 @@ int		process_fill_browser_archive(t_header_parser *parser,
 		{
 			if (ret == 1)
 				return (ret);
+			else if (ret)
+				browser->ret = 1;
 		}
 		i++;
 	}

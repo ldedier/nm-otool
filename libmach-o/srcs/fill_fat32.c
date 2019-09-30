@@ -31,6 +31,7 @@ int		process_browser_fat_arch32(struct fat_arch *fat_arch,
 	{
 		return (ret);
 	}
+	browser->ret = 1;
 	return (0);
 }
 

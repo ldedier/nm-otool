@@ -36,7 +36,10 @@ int		process_nm(char *filename, t_browser *browser)
 	if (fill_browser(&parser, browser, 1))
 	{
 		if (free_browser(browser))
+		{
+			ft_tree_del(&browser->parsers, free_parser_tree);
 			return (1);
+		}
 		ft_tree_del(&browser->parsers, free_parser_tree);
 		return (1);
 	}
@@ -51,7 +54,9 @@ int		process_args(t_arg_parser *parser, t_browser *browser)
 {
 	t_list			*lst;
 	t_arg_parsed	*test;
+	int				ret;
 
+	ret = 0;
 	browser->nb_args = parser->nb_args;
 	lst = parser->parsed;
 	while (lst)
@@ -59,11 +64,12 @@ int		process_args(t_arg_parser *parser, t_browser *browser)
 		test = (t_arg_parsed*)lst->content;
 		if (test->type == E_ARG)
 		{
-			process_nm(test->long_name, browser);
+			if (process_nm(test->long_name, browser))
+				ret = 1;
 		}
 		lst = lst->next;
 	}
-	return (0);
+	return (ret);
 }
 
 void	init_wrapper(t_nm_wrapper *wrapper, t_nm_flags *flags,
@@ -92,7 +98,7 @@ int		main(int ac, char **av)
 	browser.reserved = &flags;
 	if (browser.ret)
 		return (opt_free(&parser, browser.ret));
-	process_args(&parser, &browser);
+	browser.ret |= process_args(&parser, &browser);
 	if (parser.nb_args == 0)
 	{
 		browser.nb_args = 1;

@@ -1,0 +1,17 @@
+compile.sh: my ret: {{1}}, otool ret: {{0}}
+diff: my ret: {{1}}, otool ret: {{0}}
+empty: my ret: {{1}}, otool ret: {{0}}
+fat_bad_string_index: my ret: {{0}}, otool ret: {{1}}
+fichier_vide: my ret: {{1}}, otool ret: {{0}}
+hello_je_diff: my ret: {{0}}, otool ret: {{1}}
+indirect_bad_string: my ret: {{0}}, otool ret: {{1}}
+lib_archive_medium: my ret: {{1}}, otool ret: {{0}}
+magic: my ret: {{1}}, otool ret: {{0}}
+mega_bad_string: my ret: {{0}}, otool ret: {{1}}
+mine: my ret: {{1}}, otool ret: {{0}}
+mine_err: my ret: {{1}}, otool ret: {{0}}
+python_returns: my ret: {{0}}, otool ret: {{1}}
+reversed_magic: my ret: {{1}}, otool ret: {{0}}
+salam_i_like_cum: my ret: {{0}}, otool ret: {{1}}
+strtable_past_eof: my ret: {{0}}, otool ret: {{1}}
+why_are_you_crashing: my ret: {{0}}, otool ret: {{1}}
