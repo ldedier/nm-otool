@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 13:02:13 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/16 16:09:05 by ldedier          ###   ########.fr       */
+/*   Created: 2019/08/19 14:31:06 by ldedier           #+#    #+#             */
+/*   Updated: 2019/09/30 18:34:48 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,17 +114,13 @@ int		fill_browser(t_header_parser *parser, t_browser *browser, int first)
 	{
 		ft_dprintf(2, "%s: %s The file was not recognised as "\
 		"a valid object file\n\n", browser->progname, browser->filename);
-		return (1);
+		return (browser->bin == E_BIN_NM);
 	}
 	swap_header(parser);
 	if (parser->type == E_64)
-	{
 		return (fill_browser64(parser, browser));
-	}
 	else if (parser->type == E_32)
-	{
 		return (fill_browser32(parser, browser));
-	}
 	else if (parser->type == E_FAT32)
 		return (fill_browser_fat32(parser, browser));
 	else if (parser->type == E_ARCHIVE)

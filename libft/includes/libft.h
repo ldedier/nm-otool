@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 18:21:30 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/17 17:52:51 by ldedier          ###   ########.fr       */
+/*   Created: 2019/08/19 14:22:55 by ldedier           #+#    #+#             */
+/*   Updated: 2019/08/19 15:01:28 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,7 @@ int					opt_parse_args(t_arg_parser *parser, char **av);
 t_arg_option		*find_opt(t_arg_parser *parser, t_arg_parsed *opt);
 char				*get_shorts(t_arg_parser *parser);
 void				print_usage(t_arg_parser *parser);
-void				process_opt(t_arg_parser *parser, void *flags);
+int					process_opt(t_arg_parser *parser, void *flags);
 int					opt_free(t_arg_parser *parser, int ret);
 
 #endif

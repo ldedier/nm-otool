@@ -6,7 +6,7 @@
 #    By: niragne <niragne@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/18 11:31:28 by ldedier           #+#    #+#              #
-#    Updated: 2019/08/16 15:13:01 by ldedier          ###   ########.fr        #
+#    Updated: 2019/08/19 17:11:54 by ldedier          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,13 @@ SRCS_NO_PREFIX = corrupted.c debug.c fill.c fill32.c fill64.c fill_archive.c \
 				 symbols_sort_numerical.c symbol_tools.c new_symbols.c \
 				 add_objects.c fill_fat32_tools.c corrupted_fill64.c \
 				 fill_sections64.c fill64_tools.c corrupted_fill32.c \
-				 fill32_tools.c fill_sections32.c
+				 fill32_tools.c fill_sections32.c print_value.c
 
 INCLUDES_NO_PREFIX = mach_o.h sections.h symbols.h
 
 SOURCES = $(addprefix $(SRCDIR)/, $(SRCS_NO_PREFIX))
 OBJECTS = $(addprefix $(OBJDIR)/, $(SRCS_NO_PREFIX:%.c=%.o))
-	INCLUDES = $(addprefix $(INCLUDESDIR)/, $(INCLUDES_NO_PREFIX))
+INCLUDES = $(addprefix $(INCLUDESDIR)/, $(INCLUDES_NO_PREFIX))
 
 INC = -I $(INCLUDESDIR) -I $(LIBFTDIR)/$(LIBFT_INCLUDEDIR)
 
@@ -70,7 +70,7 @@ $(OBJDIR)/%.o : $(SRCDIR)/%.c $(INCLUDES)
 	@mkdir -p $(OBJDIR)
 	$(CC) -c $< -o $@ $(CFLAGS)
 
-$(BINDIR)/$(NAME): $(OBJECTS)
+$(BINDIR)/$(NAME): $(OBJECTS) $(LIBFT)
 	ar rc $@ $^
 	ranlib $(NAME)
 	@echo "$(OK_COLOR)$(NAME) linked with success !$(EOC)"

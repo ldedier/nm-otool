@@ -29,6 +29,7 @@ appendsymboliclinks()
 	done
 }
 
+mkdir -p $all_dir
 rm $all_dir/*
 for file in ./*;
 do

@@ -6,7 +6,7 @@
 /*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 15:02:04 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/16 15:02:05 by ldedier          ###   ########.fr       */
+/*   Updated: 2019/09/30 19:42:21 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		corrupted_load_command(struct load_command *lc, t_browser *browser,
 			+ sizeof(*header) + header->sizeofcmds)
 	{
 		ft_dprintf(2, "%s: %s truncated or malformed object "
-				"(load command %d extends past the end of all"\
+				"(load command %d extends past the end of all "
 				"load commands in the file)\n\n",
 				browser->progname, browser->filename, index);
 		return (1);

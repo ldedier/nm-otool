@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mach_o.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 11:40:27 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/17 17:33:19 by ldedier          ###   ########.fr       */
+/*   Created: 2019/08/19 14:30:29 by ldedier           #+#    #+#             */
+/*   Updated: 2019/09/30 18:11:13 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,5 +336,14 @@ int							get_total_sections32(t_list *segments);
 int							get_sections32(t_header_parser *parser,
 								t_browser *browser);
 int							fill_symbol_table32(t_header_parser *parser,
+								t_browser *browser);
+/*
+** should_print_value.c
+*/
+int							should_print_value32(t_symbol32 symbol32,
+								t_browser *browser);
+int							should_print_value64(t_symbol64 symbol64,
+								t_browser *browser);
+int							should_print_value(t_symbol *symbol,
 								t_browser *browser);
 #endif

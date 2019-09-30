@@ -6,7 +6,7 @@
 /*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 18:03:11 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/17 17:51:52 by ldedier          ###   ########.fr       */
+/*   Updated: 2019/08/19 16:59:43 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,7 @@ void	print_symbol64(t_header_parser *parser, t_symbol64 symbol64,
 			char debug, t_browser *browser)
 {
 	(void)parser;
-	if ((!((symbol64.nlist->n_type & N_TYPE) == N_UNDF) ||
-		browser->has_bad_index) ||
-			(parser->parser_enum == PARSER_ENUM_OBJECT &&
-				symbol64.nlist->n_value > 0))
+	if (should_print_value64(symbol64, browser))
 	{
 		if (!((t_nm_flags *)(browser->reserved))->flag_u)
 		{
@@ -71,8 +68,7 @@ void	print_symbol64(t_header_parser *parser, t_symbol64 symbol64,
 
 void	print_symbol32(t_symbol32 symbol32, char debug, t_browser *browser)
 {
-	if (((!((symbol32.nlist->n_type & N_TYPE) == N_UNDF)
-			|| browser->has_bad_index)))
+	if (should_print_value32(symbol32, browser))
 	{
 		if (!((t_nm_flags *)(browser->reserved))->flag_u)
 			ft_printf("%08llx %c %s\n", symbol32.nlist->n_value,

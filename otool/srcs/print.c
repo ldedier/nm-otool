@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 13:24:40 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/17 14:20:38 by niragne          ###   ########.fr       */
+/*   Created: 2019/08/19 14:36:58 by ldedier           #+#    #+#             */
+/*   Updated: 2019/09/30 17:26:22 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	otool_print_header_parser(t_header_parser *parser,
 				" string table, for symbol at index %d)\n", browser->progname,
 				browser->filename, browser->bad_string_index,
 				browser->bad_symbol_index);
+			browser->ret = 1;
 			return ;
 		}
 		process_otool_print_header_parser(parser, flags);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/06 13:58:37 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/17 12:14:01 by niragne          ###   ########.fr       */
+/*   Created: 2019/08/19 14:36:45 by ldedier           #+#    #+#             */
+/*   Updated: 2019/08/19 14:59:10 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,4 @@ void	flag_invalid(t_arg_parser *parser, void *flags)
 		ft_dprintf(2, "error: %s: unexpected error handling %s\n",
 		parser->prog_name, opt->long_name);
 	print_usage(parser);
-	exit(EXIT_FAILURE);
 }

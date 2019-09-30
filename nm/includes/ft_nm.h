@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 12:58:24 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/17 17:19:16 by ldedier          ###   ########.fr       */
+/*   Created: 2019/08/19 14:34:10 by ldedier           #+#    #+#             */
+/*   Updated: 2019/08/19 17:12:16 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,5 @@ void						nm_print(t_browser *browser, int force);
 void						print_parser_header_intro(t_header_parser *parser);
 void						print_symbol(t_header_parser *parser,
 								t_symbol *symbol, t_browser *browser);
+
 #endif

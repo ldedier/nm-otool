@@ -50,7 +50,7 @@ do
 	true_ret=$?
 	if [ $my_ret -ne $true_ret ];
 	then
-		echo -e "${red}ret diff for file ${file}"
+		echo -e "${red}ret diff for file ${file}${eoc}"
 		echo "${basename}: my ret: {{${my_ret}}}, otool ret: {{${true_ret}}}" >> $diff_file_list
 		cp $file $log_dir
 	else

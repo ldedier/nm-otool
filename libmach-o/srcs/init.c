@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/21 02:14:47 by ldedier           #+#    #+#             */
-/*   Updated: 2019/08/13 18:36:11 by niragne          ###   ########.fr       */
+/*   Created: 2019/08/19 14:32:36 by ldedier           #+#    #+#             */
+/*   Updated: 2019/09/30 18:10:33 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@ void	init_parser(t_header_parser *parser, void *ptr,
 	parser->parser_union.arch.relevant = 0;
 }
 
+void	init_browser_null(t_browser *browser)
+{
+	browser->force = 0;
+	browser->last_member_name = NULL;
+	browser->parsers = NULL;
+	browser->from = -1;
+}
+
 int		init_browser(t_browser *browser, char *filename)
 {
 	int			fd;
 
-	browser->force = 0;
+	init_browser_null(browser);
 	browser->filename = filename;
-	browser->last_member_name = NULL;
-	browser->parsers = NULL;
-	browser->from = -1;
 	if ((fd = open(filename, O_RDONLY)) < 0)
 	{
 		ft_dprintf(2, "error opening '%s'\n", filename);
@@ -45,14 +50,17 @@ int		init_browser(t_browser *browser, char *filename)
 	if ((fstat(fd, &browser->st)) < 0)
 	{
 		ft_dprintf(2, "error fstat on file '%s'\n", filename);
+		close(fd);
 		return (1);
 	}
 	if ((browser->ptr = mmap(0, browser->st.st_size,
 		PROT_READ | PROT_WRITE, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
 	{
 		ft_dprintf(2, "could not map file '%s'\n", filename);
+		close(fd);
 		return (1);
 	}
+	close(fd);
 	return (0);
 }
 

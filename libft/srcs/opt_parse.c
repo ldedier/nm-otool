@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opt_parse.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 13:49:12 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/17 14:09:11 by niragne          ###   ########.fr       */
+/*   Created: 2019/08/19 14:24:27 by ldedier           #+#    #+#             */
+/*   Updated: 2019/08/19 15:00:55 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_arg_option	*find_opt(t_arg_parser *parser, t_arg_parsed *opt)
 	return (NULL);
 }
 
-void			process_opt(t_arg_parser *parser, void *flags)
+int				process_opt(t_arg_parser *parser, void *flags)
 {
 	t_list			*lst;
 	t_arg_option	*opt;
@@ -84,8 +84,12 @@ void			process_opt(t_arg_parser *parser, void *flags)
 			if ((opt = find_opt(parser, test)))
 				opt->f(parser, flags);
 			else
+			{
 				parser->invalid(parser, flags);
+				return (1);
+			}
 		}
 		lst = lst->next;
 	}
+	return (0);
 }

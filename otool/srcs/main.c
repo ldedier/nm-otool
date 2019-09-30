@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niragne <niragne@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ldedier <ldedier@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/19 13:02:13 by niragne           #+#    #+#             */
-/*   Updated: 2019/08/17 12:29:24 by niragne          ###   ########.fr       */
+/*   Created: 2019/08/19 14:36:52 by ldedier           #+#    #+#             */
+/*   Updated: 2019/09/30 18:12:08 by ldedier          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		process_otool(char *filename, t_browser *browser, t_otool_flags *flags)
 	int				ret;
 
 	if (init_browser(browser, filename))
-		return (1);
+		return (0);
 	init_parser(&parser, browser->ptr, 0, filename);
 	if ((ret = fill_browser(&parser, browser, 1)))
 	{
@@ -102,7 +102,8 @@ int		main(int ac, char **av)
 	opt_init_parser(&parser, flag_invalid, av[0]);
 	opt_add_to_parser(&parser, g_opts, sizeof(g_opts));
 	opt_parse_args(&parser, av + 1);
-	process_opt(&parser, &flags);
+	if (process_opt(&parser, &flags))
+		return (opt_free(&parser, 1));
 	init_browser_general(&browser, av[0], E_BIN_OTOOL);
 	if (process_args(&parser, &flags, &browser))
 		return (opt_free(&parser, EXIT_FAILURE));
